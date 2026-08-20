@@ -17,6 +17,7 @@
       --accent: #7ee3a8;
       --accent-2: #4fb3ff;
       --border: rgba(255,255,255,0.08);
+      --warn: #ffb347;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -67,6 +68,19 @@
       margin-left: 10px;
     }
     .cta-secondary:hover { background: var(--panel-2); }
+    .cta-disabled {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: not-allowed;
+    }
     .badge {
       display: inline-block;
       padding: 6px 10px;
@@ -176,6 +190,15 @@
       line-height: 1.7;
     }
     .selector-panel.open { display: block; }
+    .coming-soon {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,179,71,0.08);
+      border: 1px solid rgba(255,179,71,0.25);
+      color: var(--warn);
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -268,6 +291,7 @@
       <div class="selector-panel" id="panel-mac" aria-labelledby="tab-mac">
         <p><strong>Mac:</strong> a macOS release is not available yet. The current shipped build is Windows. If you want, I can prioritize Mac next.</p>
         <p style="margin-top:8px;">Until then, the Windows release is the only confirmed downloadable asset in the latest release.</p>
+        <div class="coming-soon">Mac build: coming soon.</div>
       </div>
       <div style="margin-top: 18px; text-align: center;">
         <a class="cta" id="download-cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
@@ -381,7 +405,7 @@
         if (panel) panel.classList.add('open');
         if (tab.dataset.platform === 'mac') {
           downloadCta.href = macHref;
-          downloadCtaText.textContent = 'Open release page';
+          downloadCtaText.textContent = 'Mac release coming soon';
         } else {
           downloadCta.href = windowsHref;
           downloadCtaText.textContent = 'Download KnightTrader Coinbase';
