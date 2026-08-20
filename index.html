@@ -183,53 +183,25 @@
     <header>
       <div class="badge">Coinbase Advanced Trade + Hermes AI</div>
       <h1>KnightTrader Coinbase</h1>
-      <p>Install a local trading assistant, onboard it in minutes, then watch it trade for you on Coinbase. As long as your PC stays awake and online, it can run every 5 minutes—indefinitely.</p>
-      <div class="selector" role="tablist" aria-label="Platform">
-        <button class="active" role="tab" data-platform="windows" id="tab-windows">Windows</button>
-        <button role="tab" data-platform="mac" id="tab-mac">Mac</button>
-      </div>
-      <div class="selector-panel open" id="panel-windows" aria-labelledby="tab-windows">
-        <p><strong>Windows:</strong> download the installer below, run it, then open the How-To tab. If the download button breaks, open the release page and grab <strong>Knightrader.Coinbase.exe</strong> manually.</p>
-      </div>
-      <div class="selector-panel" id="panel-mac" aria-labelledby="tab-mac">
-        <p><strong>Mac:</strong> download the `.dmg` from the latest release, open it, and drag the app into your `Applications` folder. If no Mac release is listed yet, the Windows release is the current shipped build and Mac can be prioritized.</p>
-        <p style="margin-top:8px;">After install, open the How-To tab inside the app. It includes Mac-specific guidance for staying awake, connected, and running unattended.</p>
-      </div>
-      <div style="margin-top: 18px;">
-        <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
-          <span>Download KnightTrader Coinbase</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-        <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">
-          <span>Open release page</span>
-        </a>
-      </div>
-      <p class="download-meta">Windows .exe installer • If the download button breaks, use the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">release page</a> and download <strong>Knightrader.Coinbase.exe</strong> manually.</p>
-      <div class="pill-row">
-        <div class="pill">Local-first</div>
-        <div class="pill">Inspectable</div>
-        <div class="pill">No VPN</div>
-        <div class="pill">Persistent memory</div>
-        <div class="pill">Beginner guided setup</div>
-      </div>
+      <p>A local trading assistant for Coinbase that can run every 5 minutes while your PC stays awake and online. If you are new to crypto, bots, or AI agents, the in-app How-To tab walks you through setup. If you have used trading tools before, you can treat this as an inspectable local agent with persistent memory and configurable prompts.</p>
     </header>
 
     <section>
       <div class="grid">
         <div class="card">
           <div class="icon">🧭</div>
-          <h3>Beginners</h3>
-          <p>You do not need to make trading decisions. Install, follow the How-To tab, and let the assistant handle the workflow.</p>
+          <h3>New to crypto or trading agents</h3>
+          <p>You do not need to make trading decisions. Install, open the How-To tab, and follow the steps. The agent handles the workflow and trades on your behalf once configured.</p>
         </div>
         <div class="card">
           <div class="icon">⚡</div>
-          <h3>Active traders</h3>
-          <p>You own the assistant, not a black box. Inspect the dashboard, review logs, and steer strategy over time.</p>
+          <h3>Experienced traders and bot users</h3>
+          <p>You keep full visibility into logs, prompts, and local state. This is not a black-box hosted service. Inspect behavior, adjust strategy notes, and review outcomes.</p>
         </div>
         <div class="card">
           <div class="icon">🔐</div>
           <h3>Local-first operation</h3>
-          <p>No VPN required. Credentials stay on your machine. The assistant runs locally and talks to Coinbase directly.</p>
+          <p>No VPN required. Credentials stay on your machine. The agent runs locally and talks to Coinbase directly.</p>
         </div>
       </div>
     </section>
@@ -290,7 +262,7 @@
           <div class="step-num">1</div>
           <div>
             <strong>Download the installer</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Use the button above to download the installer for your platform.</p>
+            <p style="color: var(--muted); margin: 6px 0 0;">Use the button below to download the installer for your platform.</p>
           </div>
         </div>
         <div class="step">
@@ -352,6 +324,37 @@
           <h3>What should I do if the download button breaks?</h3>
           <p>Use the <strong>Open release page</strong> link below the main download button and grab the installer for your platform manually from the latest release.</p>
         </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="selector" role="tablist" aria-label="Platform">
+        <button class="active" role="tab" data-platform="windows" id="tab-windows">Windows</button>
+        <button role="tab" data-platform="mac" id="tab-mac">Mac</button>
+      </div>
+      <div class="selector-panel open" id="panel-windows" aria-labelledby="tab-windows">
+        <p><strong>Windows:</strong> download the installer below, run it, then open the How-To tab. If the download button breaks, open the release page and grab <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+      </div>
+      <div class="selector-panel" id="panel-mac" aria-labelledby="tab-mac">
+        <p><strong>Mac:</strong> download the `.dmg` from the latest release, open it, and drag the app into your `Applications` folder. If no Mac release is listed yet, the Windows release is the current shipped build and Mac can be prioritized.</p>
+        <p style="margin-top:8px;">After install, open the How-To tab inside the app. It includes Mac-specific guidance for staying awake, connected, and running unattended.</p>
+      </div>
+      <div style="margin-top: 18px;">
+        <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
+          <span>Download KnightTrader Coinbase</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">
+          <span>Open release page</span>
+        </a>
+      </div>
+      <p class="download-meta">Windows .exe installer • If the download button breaks, use the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">release page</a> and download <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+      <div class="pill-row">
+        <div class="pill">Local-first</div>
+        <div class="pill">Inspectable</div>
+        <div class="pill">No VPN</div>
+        <div class="pill">Persistent memory</div>
+        <div class="pill">Beginner guided setup</div>
       </div>
     </section>
 
