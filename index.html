@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KnightTrader Coinbase — A Local Trading Agent for Coinbase</title>
-  <meta name="description" content="KnightTrader Coinbase installs a local trading agent on your PC. Follow the in-app How-To tab, then watch it trade on Coinbase every 5 minutes." />
-  <meta name="theme-color" content="#0b0f14" />
+  <title>KnightTrader Coinbase — Local Autonomous Trading Assistant</title>
+  <meta name="description" content="KnightTrader Coinbase sets up a local trading assistant on your PC. Install, open the How-To tab, and watch it trade on Coinbase every 5 minutes while your computer stays awake and online." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://mknight2690-sys.github.io/knighttrader-coinbase-site/" />
   <style>
     :root {
@@ -17,7 +17,6 @@
       --accent: #7ee3a8;
       --accent-2: #4fb3ff;
       --border: rgba(255,255,255,0.08);
-      --danger: #ff7b72;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -38,7 +37,7 @@
     header p {
       color: var(--muted);
       font-size: clamp(15px, 1.6vw, 18px);
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 28px;
     }
     .cta {
@@ -67,6 +66,7 @@
       border: 1px solid var(--border);
       margin-left: 10px;
     }
+    .cta-secondary:hover { background: var(--panel-2); }
     .badge {
       display: inline-block;
       padding: 6px 10px;
@@ -146,6 +146,36 @@
       color: var(--muted);
       font-size: 13px;
     }
+    .selector {
+      display: inline-flex;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+    .selector button {
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .selector button.active {
+      background: rgba(126,227,168,0.12);
+      color: var(--accent);
+    }
+    .selector-panel {
+      display: none;
+      max-width: 720px;
+      margin: 14px auto 0;
+      text-align: left;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .selector-panel.open { display: block; }
   </style>
 </head>
 <body>
@@ -153,15 +183,27 @@
     <header>
       <div class="badge">Coinbase Advanced Trade + Hermes AI</div>
       <h1>KnightTrader Coinbase</h1>
-      <p>A local trading agent for Coinbase that can run every 5 minutes while your PC stays awake and online. If you are new to crypto, bots, or AI agents, the in-app How-To tab walks you through setup. If you have used trading tools before, you can treat this as an inspectable local agent with persistent memory and configurable prompts.</p>
-      <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
-        <span>Download KnightTrader Coinbase</span>
-        <span aria-hidden="true">↓</span>
-      </a>
-      <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/tag/v1.0.0" rel="noreferrer">
-        <span>View release notes</span>
-      </a>
-      <p class="download-meta">Windows .exe installer • If the download button breaks, use the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/tag/v1.0.0" rel="noreferrer">release page</a> and download <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+      <p>Install a local trading assistant, onboard it in minutes, then watch it trade for you on Coinbase. As long as your PC stays awake and online, it can run every 5 minutes—indefinitely.</p>
+      <div class="selector" role="tablist" aria-label="Platform">
+        <button class="active" role="tab" data-platform="windows" id="tab-windows">Windows</button>
+        <button role="tab" data-platform="mac" id="tab-mac">Mac</button>
+      </div>
+      <div class="selector-panel open" id="panel-windows" aria-labelledby="tab-windows">
+        <p><strong>Windows:</strong> download the installer below, run it, then open the How-To tab. If the download button breaks, open the release page and grab <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+      </div>
+      <div class="selector-panel" id="panel-mac" aria-labelledby="tab-mac">
+        <p><strong>Mac:</strong> a macOS build is not released yet. If you want it, ask for it and I’ll prioritize it. In the meantime, the in-app How-To tab still covers setup concepts that apply across platforms.</p>
+      </div>
+      <div style="margin-top: 18px;">
+        <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
+          <span>Download KnightTrader Coinbase</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">
+          <span>Open release page</span>
+        </a>
+      </div>
+      <p class="download-meta">Windows .exe installer • If the download button breaks, use the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases" rel="noreferrer">release page</a> and download <strong>Knightrader.Coinbase.exe</strong> manually.</p>
       <div class="pill-row">
         <div class="pill">Local-first</div>
         <div class="pill">Inspectable</div>
@@ -175,18 +217,18 @@
       <div class="grid">
         <div class="card">
           <div class="icon">🧭</div>
-          <h3>New to crypto or trading agents</h3>
-          <p>You do not need to make trading decisions. Install, open the How-To tab, and follow the steps. The agent handles the workflow and trades on your behalf once configured.</p>
+          <h3>Beginners</h3>
+          <p>You do not need to make trading decisions. Install, follow the How-To tab, and let the assistant handle the workflow.</p>
         </div>
         <div class="card">
           <div class="icon">⚡</div>
-          <h3>Experienced traders and bot users</h3>
-          <p>You keep full visibility into logs, prompts, and local state. This is not a black-box hosted service. Inspect behavior, adjust strategy notes, and review outcomes.</p>
+          <h3>Active traders</h3>
+          <p>You own the assistant, not a black box. Inspect the dashboard, review logs, and steer strategy over time.</p>
         </div>
         <div class="card">
           <div class="icon">🔐</div>
           <h3>Local-first operation</h3>
-          <p>No VPN required. Credentials stay on your machine. The agent runs locally and talks to Coinbase directly.</p>
+          <p>No VPN required. Credentials stay on your machine. The assistant runs locally and talks to Coinbase directly.</p>
         </div>
       </div>
     </section>
@@ -195,14 +237,14 @@
       <div class="split">
         <div>
           <h2 style="margin: 0 0 10px; font-size: 22px;">What is Hermes?</h2>
-          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is the local AI agent on your machine. In this setup, it becomes your trading assistant on Coinbase.</p>
+          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is the local AI assistant on your machine. In this setup, it becomes your trading assistant on Coinbase.</p>
           <p style="color: var(--muted); margin: 0 0 14px;">If you are new to AI agents, think of it like a local assistant that you can review and steer. If you have used agents or automation before, think of it as a configurable local runtime with persistent memory and scheduled execution.</p>
           <p style="color: var(--muted); margin: 0;">It is not a hosted bot you cannot inspect. It runs on your computer, keeps your credentials local, and executes scheduled trading checks through the Hermes dashboard.</p>
         </div>
         <div>
           <h2 style="margin: 0 0 10px; font-size: 22px;">What you are getting</h2>
           <ul style="color: var(--muted); padding-left: 18px; margin: 0;">
-            <li style="margin-bottom: 10px;">A local trading agent that runs every 5 minutes.</li>
+            <li style="margin-bottom: 10px;">A local trading assistant that runs every 5 minutes.</li>
             <li style="margin-bottom: 10px;">Continuous operation while your PC is awake and online.</li>
             <li style="margin-bottom: 10px;">No VPN, no ongoing manual decisions, no extra headaches.</li>
             <li style="margin-bottom: 10px;">A simple How-To tab inside the app.</li>
@@ -219,7 +261,7 @@
         <div>
           <h2 style="margin: 0 0 10px; font-size: 22px;">Persistent learning</h2>
           <p style="color: var(--muted); margin: 0 0 14px;">Hermes is built to remember. It writes durable memory notes for important trades and outcomes, so later runs can learn from earlier ones instead of starting blind.</p>
-          <p style="color: var(--muted); margin: 0;">That means the agent can refine strategy over time and keep a trace of what it did, rather than treating each tick as a fresh unknown.</p>
+          <p style="color: var(--muted); margin: 0;">That means the assistant can refine strategy over time and keep a trace of what it did, rather than treating each tick as a fresh unknown.</p>
         </div>
         <div>
           <h2 style="margin: 0 0 10px; font-size: 22px;">Strategy improvement</h2>
@@ -228,7 +270,7 @@
             <li style="margin-bottom: 10px;">You can edit prompts and strategy notes.</li>
             <li style="margin-bottom: 10px;">It can converge on better behavior after fewer turns.</li>
             <li style="margin-bottom: 10px;">Skills and lessons are kept locally.</li>
-            <li style="margin-bottom: 10px;">You are effectively training your own agent.</li>
+            <li style="margin-bottom: 10px;">You are effectively training your own assistant.</li>
           </ul>
         </div>
       </div>
@@ -261,14 +303,14 @@
           <div class="step-num">3</div>
           <div>
             <strong>Open the How-To tab</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Follow the steps for Hermes setup, API keys, and first-time configuration.</p>
+            <p style="color: var(--muted); margin: 6px 0 0;">Follow the steps for Hermes setup, API keys, first-time configuration, and keeping your computer awake.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
           <div>
             <strong>Watch it run</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Once configured, the agent trades on Coinbase every 5 minutes while your computer stays awake and online.</p>
+            <p style="color: var(--muted); margin: 6px 0 0;">Once configured, the assistant trades on Coinbase every 5 minutes while your computer stays awake and online.</p>
           </div>
         </div>
       </div>
@@ -279,7 +321,7 @@
       <div class="grid">
         <div class="faq-item">
           <h3>I am new to crypto. Is this for me?</h3>
-          <p>Yes. The app includes a How-To tab that explains each step. You can follow along even if you have not used a trading bot or AI agent before.</p>
+          <p>Yes. The app includes a How-To tab that explains each step. You can follow along even if you have not used a trading bot or AI assistant before.</p>
         </div>
         <div class="faq-item">
           <h3>I have used trading bots before. Is this different?</h3>
@@ -291,7 +333,7 @@
         </div>
         <div class="faq-item">
           <h3>Do I have to place trades myself?</h3>
-          <p>No. After setup, the agent can trade on your behalf. You can inspect logs and the dashboard anytime.</p>
+          <p>No. After setup, the assistant can trade on your behalf. You can inspect logs and the dashboard anytime.</p>
         </div>
         <div class="faq-item">
           <h3>Where do my API keys go?</h3>
@@ -299,22 +341,36 @@
         </div>
         <div class="faq-item">
           <h3>What if I need help?</h3>
-          <p>Open the How-To tab inside the app. It walks through Hermes setup, API keys, and first-time configuration.</p>
+          <p>Open the How-To tab inside the app. It walks through Hermes setup, API keys, first-time configuration, and keeping your computer awake.</p>
         </div>
         <div class="faq-item">
           <h3>Is this a subscription or hosted service?</h3>
-          <p>No. It is a local Windows app with one-time setup. There is no ongoing account with us beyond the Coinbase API you control.</p>
+          <p>No. It is a local app with one-time setup. There is no ongoing account with us beyond the Coinbase API you control.</p>
         </div>
         <div class="faq-item">
           <h3>What should I do if the download button breaks?</h3>
-          <p>Use the release page fallback link below the download button and grab <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+          <p>Use the <strong>Open release page</strong> link below the main download button and grab <strong>Knightrader.Coinbase.exe</strong> manually from the latest release.</p>
         </div>
       </div>
     </section>
 
     <footer>
-      Built for Coinbase Advanced Trade users who want a local, inspectable, continuously running trading agent.
+      Built for Coinbase Advanced Trade users who want a local, inspectable, continuously running trading assistant.
     </footer>
   </div>
+
+  <script>
+    const tabs = document.querySelectorAll('[data-platform]');
+    const panels = document.querySelectorAll('.selector-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('open'));
+        tab.classList.add('active');
+        const panel = document.getElementById('panel-' + tab.dataset.platform);
+        if (panel) panel.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>
