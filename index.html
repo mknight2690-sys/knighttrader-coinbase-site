@@ -268,27 +268,19 @@
 
     <section>
       <h2 style="margin: 0 0 16px; font-size: 22px; text-align: center;">Download</h2>
-      <div class="selector" role="tablist" aria-label="Platform">
-        <button class="active" role="tab" data-platform="windows" id="tab-windows">Windows</button>
-        <button role="tab" data-platform="mac" id="tab-mac">Mac</button>
-      </div>
-      <div class="selector-panel open" id="panel-windows" aria-labelledby="tab-windows">
-        <p><strong>Windows:</strong> download the installer below, run it, then open the How-To tab. If the download button breaks, open the release page and grab the latest <strong>.exe</strong> manually.</p>
-      </div>
-      <div class="selector-panel" id="panel-mac" aria-labelledby="tab-mac">
-        <p><strong>Mac:</strong> download the latest <strong>.dmg</strong> from the release page below. If the download button breaks, open the release page and grab the latest <strong>.dmg</strong> manually.</p>
-        <p style="margin-top:8px;">After install, open the How-To tab inside the app. It includes Mac-specific guidance for staying awake, connected, and running unattended.</p>
-      </div>
-      <div style="margin-top: 18px; text-align: center;">
-        <a class="cta" id="download-cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
-          <span id="download-cta-text">Download KnightTrader Coinbase</span>
+      <div style="display:grid; gap:14px; max-width:760px; margin: 0 auto;">
+        <a class="cta" id="download-cta-windows" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
+          <span>Download for Windows</span>
           <span aria-hidden="true">↓</span>
         </a>
-        <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases" rel="noreferrer">
-          <span>Open release page</span>
+        <a class="cta" id="download-cta-mac" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/KnightTrader.Coinbase-1.0.0-arm64.dmg" rel="noreferrer">
+          <span>Download for Mac</span>
+          <span aria-hidden="true">↓</span>
         </a>
       </div>
-      <p class="download-meta" style="text-align: center;">Windows .exe installer • Mac .dmg • If the download button breaks, use the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases" rel="noreferrer">release page</a>.</p>
+      <p class="download-meta" style="text-align: center; margin-top: 14px;">
+        Windows installer • Mac .dmg • If either button breaks, open the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases" rel="noreferrer">release page</a>.
+      </p>
       <div class="pill-row" style="justify-content: center;">
         <div class="pill">Local-first</div>
         <div class="pill">Inspectable</div>
@@ -364,8 +356,8 @@
           <p>No. It is a local app with one-time setup. There is no ongoing account with us beyond the Coinbase API you control.</p>
         </div>
         <div class="faq-item">
-          <h3>What should I do if the download button breaks?</h3>
-          <p>Use the <strong>Open release page</strong> link below the main download button and grab the installer for your platform manually from the latest release.</p>
+          <h3>What should I do if a download button breaks?</h3>
+          <p>Use the <strong>Open release page</strong> link and grab the installer for your platform manually from the latest release.</p>
         </div>
       </div>
     </section>
@@ -375,29 +367,5 @@
     </footer>
   </div>
 
-  <script>
-    const tabs = document.querySelectorAll('[data-platform]');
-    const panels = document.querySelectorAll('.selector-panel');
-    const downloadCta = document.getElementById('download-cta');
-    const downloadCtaText = document.getElementById('download-cta-text');
-    const windowsHref = 'https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/Knightrader.Coinbase.exe';
-    const macHref = 'https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/KnightTrader.Coinbase-1.0.0-arm64.dmg';
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('open'));
-        tab.classList.add('active');
-        const panel = document.getElementById('panel-' + tab.dataset.platform);
-        if (panel) panel.classList.add('open');
-        if (tab.dataset.platform === 'mac') {
-          downloadCta.href = macHref;
-          downloadCtaText.textContent = 'Download KnightTrader Coinbase for Mac';
-        } else {
-          downloadCta.href = windowsHref;
-          downloadCtaText.textContent = 'Download KnightTrader Coinbase';
-        }
-      });
-    });
-  </script>
 </body>
 </html>

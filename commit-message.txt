@@ -1,0 +1,5 @@
+Improve landing page and add release-page fallback
+
+- Add explicit release-page fallback for broken download links
+- Simplify copy and make messaging consistent
+- Improve SEO metadata and canonical URL
