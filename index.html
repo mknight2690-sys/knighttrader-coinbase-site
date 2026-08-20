@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KnightTrader Coinbase — Your Local Autonomous Trading Agent</title>
   <meta name="description" content="KnightTrader Coinbase installs a local trading agent on your PC. Follow the in-app How-To tab, then watch it trade on Coinbase every 5 minutes." />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="canonical" href="https://mknight2690-sys.github.io/knighttrader-coinbase-site/" />
   <style>
     :root {
       --bg: #0b0f14;
@@ -15,6 +17,7 @@
       --accent: #7ee3a8;
       --accent-2: #4fb3ff;
       --border: rgba(255,255,255,0.08);
+      --danger: #ff7b72;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -51,6 +54,19 @@
       box-shadow: 0 10px 30px rgba(78, 240, 166, 0.18);
     }
     .cta:hover { transform: translateY(-1px); }
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      margin-left: 10px;
+    }
     .badge {
       display: inline-block;
       padding: 6px 10px;
@@ -106,6 +122,30 @@
     .faq-item { margin: 0 0 18px; }
     .faq-item h3 { margin: 0 0 6px; font-size: 17px; }
     .faq-item p { margin: 0; color: var(--muted); font-size: 15px; }
+    .download-meta {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .download-meta a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
@@ -118,7 +158,16 @@
         <span>Download KnightTrader Coinbase</span>
         <span aria-hidden="true">↓</span>
       </a>
-      <p style="margin-top:14px; color: var(--muted); font-size: 14px;">Windows .exe installer</p>
+      <a class="cta-secondary" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/tag/v1.0.0" rel="noreferrer">
+        <span>View release notes</span>
+      </a>
+      <p class="download-meta">Windows .exe installer • If the download fails, open the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/tag/v1.0.0" rel="noreferrer">release page</a> and download <strong>Knightrader.Coinbase.exe</strong> manually.</p>
+      <div class="pill-row">
+        <div class="pill">Local-first</div>
+        <div class="pill">Inspectable</div>
+        <div class="pill">No VPN</div>
+        <div class="pill">Persistent memory</div>
+      </div>
     </header>
 
     <section>
@@ -211,7 +260,7 @@
           <div class="step-num">3</div>
           <div>
             <strong>Open the How-To tab</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Follow the steps for Hermes, API keys, and your first setup.</p>
+            <p style="color: var(--muted); margin: 6px 0 0;">Follow the steps for Hermes setup, API keys, and first-time configuration.</p>
           </div>
         </div>
         <div class="step">
@@ -242,6 +291,14 @@
         <div class="faq-item">
           <h3>What if I need help?</h3>
           <p>Open the How-To tab inside the app. It walks through Hermes setup, API keys, and first-time configuration.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is this a subscription or hosted service?</h3>
+          <p>No. It is a local Windows app with one-time setup. There is no ongoing account with us beyond the Coinbase API you control.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What should I do if the download button breaks?</h3>
+          <p>Use the release page fallback link below the download button and grab <strong>Knightrader.Coinbase.exe</strong> manually.</p>
         </div>
       </div>
     </section>
