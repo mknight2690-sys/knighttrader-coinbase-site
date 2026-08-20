@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KnightTrader Coinbase — Your Autonomous Trading Agent</title>
-  <meta name="description" content="KnightTrader Coinbase gives you a local, inspectable trading agent for Coinbase Advanced Trade. Install it, onboard in minutes, and watch it trade for you." />
+  <title>KnightTrader Coinbase — Your Local Autonomous Trading Agent</title>
+  <meta name="description" content="KnightTrader Coinbase installs a local trading agent on your PC. Follow the in-app How-To tab, then watch it trade on Coinbase every 5 minutes." />
   <style>
     :root {
       --bg: #0b0f14;
@@ -103,6 +103,9 @@
       font-size: 15px;
     }
     .note strong { color: var(--text); }
+    .faq-item { margin: 0 0 18px; }
+    .faq-item h3 { margin: 0 0 6px; font-size: 17px; }
+    .faq-item p { margin: 0; color: var(--muted); font-size: 15px; }
   </style>
 </head>
 <body>
@@ -110,7 +113,7 @@
     <header>
       <div class="badge">Coinbase Advanced Trade + Hermes AI</div>
       <h1>KnightTrader Coinbase</h1>
-      <p>Install your own trading agent. Onboard it in minutes, then watch it trade for you on Coinbase. As long as your computer stays awake and connected, it runs every 5 minutes—indefinitely.</p>
+      <p>Install a local trading agent, onboard it in minutes, then watch it trade for you on Coinbase. As long as your PC stays awake and online, it can run every 5 minutes—indefinitely.</p>
       <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase-site/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
         <span>Download KnightTrader Coinbase</span>
         <span aria-hidden="true">↓</span>
@@ -142,7 +145,7 @@
       <div class="split">
         <div>
           <h2 style="margin: 0 0 10px; font-size: 22px;">What is Hermes?</h2>
-          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is the local AI agent that works on your machine. In this setup, it becomes your trading assistant on Coinbase.</p>
+          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is the local AI agent on your machine. In this setup, it becomes your trading assistant on Coinbase.</p>
           <p style="color: var(--muted); margin: 0 0 14px;">It is not a hosted bot you cannot inspect. It runs on your computer, keeps your credentials local, and executes scheduled trading checks through the Hermes dashboard.</p>
           <p style="color: var(--muted); margin: 0;">Think of it as onboarding a trading employee: you install it, configure it once, and it keeps working.</p>
         </div>
@@ -154,6 +157,8 @@
             <li style="margin-bottom: 10px;">No VPN, no ongoing manual decisions, no extra headaches.</li>
             <li style="margin-bottom: 10px;">A simple How-To tab inside the app.</li>
             <li style="margin-bottom: 10px;">A local dashboard and logs you can watch.</li>
+            <li style="margin-bottom: 10px;">Persistent memory and strategy refinement across runs.</li>
+            <li style="margin-bottom: 10px;">One-time setup, not a subscription or hosted service.</li>
           </ul>
         </div>
       </div>
@@ -215,6 +220,28 @@
             <strong>Watch it run</strong>
             <p style="color: var(--muted); margin: 6px 0 0;">Once configured, the agent trades on Coinbase every 5 minutes while your computer stays awake and online.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="margin: 0 0 16px; font-size: 22px;">FAQ</h2>
+      <div class="grid">
+        <div class="faq-item">
+          <h3>Do I need a VPN?</h3>
+          <p>No. KnightTrader Coinbase runs locally and talks to Coinbase directly.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I have to place trades myself?</h3>
+          <p>No. After setup, the agent can trade on your behalf. You can inspect logs and the dashboard anytime.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Where do my API keys go?</h3>
+          <p>They stay on your machine. The app stores credentials locally and syncs them into your local Hermes setup.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I need help?</h3>
+          <p>Open the How-To tab inside the app. It walks through Hermes setup, API keys, and first-time configuration.</p>
         </div>
       </div>
     </section>
