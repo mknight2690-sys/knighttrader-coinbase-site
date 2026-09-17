@@ -18,6 +18,8 @@
       --accent-2: #4fb3ff;
       --border: rgba(255,255,255,0.08);
       --warn: #ffb347;
+      --error: #ff7b72;
+      --good: #7ee3a8;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -81,8 +83,6 @@
       border: 1px solid rgba(126,227,168,0.25);
       margin-bottom: 16px;
     }
-    section { padding: 44px 0; }
-    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -91,26 +91,6 @@
     }
     .card h3 { margin: 6px 0 8px; font-size: 18px; }
     .card p { margin: 0; color: var(--muted); font-size: 15px; }
-    .icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--panel-2); border: 1px solid var(--border); }
-    .split { display: grid; gap: 22px; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { .split { grid-template-columns: 1fr 1fr; } }
-    .step {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .step-num {
-      min-width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #08110d;
-      font-weight: 800;
-      display: grid; place-items: center;
-    }
-    footer { text-align: center; padding: 40px 0 70px; color: var(--muted); font-size: 14px; }
     .note {
       background: var(--panel-2);
       border: 1px solid var(--border);
@@ -120,81 +100,164 @@
       font-size: 15px;
     }
     .note strong { color: var(--text); }
-    .faq-item { margin: 0 0 18px; }
-    .faq-item h3 { margin: 0 0 6px; font-size: 17px; }
-    .faq-item p { margin: 0; color: var(--muted); font-size: 15px; }
-    .download-meta {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .download-meta a {
-      color: var(--accent-2);
-      text-decoration: none;
-    }
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 18px;
-    }
-    .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .selector {
-      display: inline-flex;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 16px;
-    }
-    .selector button {
-      background: transparent;
-      color: var(--muted);
+    .login-btn {
+      background: var(--accent);
+      color: #08110d;
       border: none;
-      padding: 10px 14px;
-      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
+      margin-left: 12px;
     }
-    .selector button.active {
-      background: rgba(126,227,168,0.12);
-      color: var(--accent);
-    }
-    .selector-panel {
+    .login-btn:hover { opacity: 0.9; }
+    /* Auth Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11, 15, 20, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
       display: none;
-      max-width: 720px;
-      margin: 14px auto 0;
-      text-align: left;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
     }
-    .selector-panel.open { display: block; }
-    .coming-soon {
-      margin-top: 14px;
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal h2 { margin: 0 0 16px; font-size: 22px; }
+    .modal h3 { margin: 18px 0 8px; font-size: 16px; color: var(--muted); }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-form input {
       padding: 12px 14px;
-      border-radius: 12px;
-      background: rgba(255,179,71,0.08);
-      border: 1px solid rgba(255,179,71,0.25);
-      color: var(--warn);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
       font-size: 14px;
     }
+    .modal-form input::placeholder { color: var(--muted); }
+    .modal-form button {
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: #08110d; border: none; }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--border); }
+    .switch-auth {
+      margin-top: 12px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .switch-auth a { color: var(--accent); cursor: pointer; }
+    .btn-close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    /* Dashboard section */
+    .dashboard-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .dashboard-section.hidden { display: none; }
+    .subscription-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: var(--panel-2);
+      border-radius: 12px;
+    }
+    .subscription-status.subscribed { border-left: 4px solid var(--good); }
+    .subscription-status.not-subscribed { border-left: 4px solid var(--warn); }
+    .subscription-status h3 { margin: 0; font-size: 16px; }
+    .subscription-status p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .btn-subscribe { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #08110d; }
+    .subscription-info { margin-top: 12px; font-size: 13px; color: var(--muted); }
+    .credentials-section { margin-top: 24px; }
+    .credentials-section h3 { margin: 0 0 12px; font-size: 16px; }
+    .cred-group { margin-bottom: 14px; }
+    .cred-group label { display: block; margin-bottom: 6px; font-size: 13px; color: var(--muted); }
+    .cred-group input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); }
+    .btn-save-creds { width: 100%; padding: 10px; }
+    .download-section { margin-top: 24px; }
+    .download-section h3 { margin: 0 0 12px; font-size: 16px; }
+    .claim-token-box {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 12px 0;
+      font-family: monospace;
+      font-size: 13px;
+      word-break: break-all;
+    }
+    .claim-token-box strong { color: var(--accent); }
+    .claim-instructions { font-size: 13px; color: var(--muted); }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-message { color: var(--error); font-size: 13px; margin-top: 8px; }
+    .success-message { color: var(--good); font-size: 13px; margin-top: 8px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .split { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; }
+    .icon { font-size: 28px; margin-bottom: 10px; }
+    .faq-item h3 { font-size: 15px; margin: 0 0 6px; }
+    .download-meta { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .subscription-banner { background: var(--warn); color: #000; padding: 12px 20px; text-align: center; font-weight: 600; display: none; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="badge">Coinbase Advanced Trade + Hermes AI</div>
+      <button id="btn-signin" class="login-btn">Sign In</button>
       <h1>KnightTrader Coinbase</h1>
-      <p>A local trading assistant for Coinbase that can run every 5 minutes while your PC stays awake and online. If you are new to crypto, bots, or AI agents, the in-app How-To tab walks you through setup. If you have used trading tools before, you can treat this as an inspectable local agent with persistent memory and configurable prompts.</p>
+      <p>A local trading assistant for Coinbase that can run every 5 minutes while your PC stays awake and online. If you are new to crypto, bots, or AI agents, the in-app How-To tab walks you through setup. If you have used trading tools before, you can treat this as an inspectable local agent with persistent memory and customizable prompts.</p>
     </header>
+
+    <!-- Subscription Notice -->
+    <div class="note" style="margin: 0 0 24px;">
+      <strong>Subscription Required:</strong> KnightTrader Coinbase is a paid service at $47/month. Subscribe to access downloads and updates.
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal-overlay">
+      <div class="modal">
+        <button class="btn-close-modal" id="close-modal">&times;</button>
+        <h2 id="modal-title">Sign In</h2>
+        <div class="modal-form">
+          <input type="email" id="email-input" placeholder="Email" />
+          <input type="password" id="password-input" placeholder="Password (min 8 chars)" />
+          <button id="auth-submit" class="btn-primary">Sign In</button>
+        </div>
+        <div class="switch-auth">
+          <span id="switch-to-signup">Don't have an account? Sign Up</span>
+        </div>
+        <div id="auth-error" class="error-message"></div>
+        <div id="auth-success" class="success-message">✓ Signed in! <a href="#" id="go-to-dashboard" style="color:var(--accent);margin-left:4px;">Go to Dashboard</a></div>
+      </div>
+    </div>
 
     <section>
       <div class="grid">
@@ -219,153 +282,382 @@
     <section>
       <div class="split">
         <div>
-          <h2 style="margin: 0 0 10px; font-size: 22px;">What is Hermes?</h2>
-          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is the local AI assistant on your machine. In this setup, it becomes your trading assistant on Coinbase.</p>
-          <p style="color: var(--muted); margin: 0 0 14px;">If you are new to AI agents, think of it like a local assistant that you can review and steer. If you have used agents or automation before, think of it as a configurable local runtime with persistent memory and scheduled execution.</p>
-          <p style="color: var(--muted); margin: 0;">It is not a hosted bot you cannot inspect. It runs on your computer, keeps your credentials local, and executes scheduled trading checks through the Hermes dashboard.</p>
+          <h2 style="margin: 0 0 10px; font-size: 22px;">What is KnightTrader Coinbase?</h2>
+          <p style="color: var(--muted); margin: 0 0 14px;">KnightTrader Coinbase is a local AI trading assistant that runs on your PC. It uses a $47/month subscription to access the Hermes AI framework and trading capabilities. Once subscribed, you can configure your Coinbase API keys and let it trade on your behalf every 5 minutes.</p>
         </div>
         <div>
-          <h2 style="margin: 0 0 10px; font-size: 22px;">What you are getting</h2>
+          <h2 style="margin: 0 0 10px; font-size: 22px;">What you get</h2>
           <ul style="color: var(--muted); padding-left: 18px; margin: 0;">
-            <li style="margin-bottom: 10px;">A local trading assistant that runs every 5 minutes.</li>
-            <li style="margin-bottom: 10px;">Continuous operation while your PC is awake and online.</li>
-            <li style="margin-bottom: 10px;">No VPN, no ongoing manual decisions, no extra headaches.</li>
-            <li style="margin-bottom: 10px;">A simple How-To tab inside the app.</li>
-            <li style="margin-bottom: 10px;">A local dashboard and logs you can watch.</li>
-            <li style="margin-bottom: 10px;">Persistent memory and strategy refinement across runs.</li>
-            <li style="margin-bottom: 10px;">One-time setup, not a subscription or hosted service.</li>
-            <li style="margin-bottom: 10px;"><strong>Hermes can autonomously trade your Coinbase account</strong> once your API keys are configured and the cron is set up.</li>
+            <li style="margin-bottom: 10px;">A local trading assistant that runs every 5 minutes</li>
+            <li style="margin-bottom: 10px;">Auto-subscription verification (24/7)</li>
+            <li style="margin-bottom: 10px;">Persistent memory and strategy refinement</li>
+            <li style="margin-bottom: 10px;">How-To tab with complete setup instructions</li>
+            <li style="margin-bottom: 10px;">Local dashboard and logs you can watch</li>
+            <li style="margin-bottom: 10px;">$47/month subscription, cancel anytime</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="split">
-        <div>
-          <h2 style="margin: 0 0 10px; font-size: 22px;">Persistent learning</h2>
-          <p style="color: var(--muted); margin: 0 0 14px;">Hermes is built to remember. It writes durable memory notes for important trades and outcomes, so later runs can learn from earlier ones instead of starting blind.</p>
-          <p style="color: var(--muted); margin: 0;">That means the assistant can refine strategy over time and keep a trace of what it did, rather than treating each tick as a fresh unknown.</p>
+    <!-- Dashboard Section ( Authenticated + Subscribed ) -->
+    <div id="dashboard-section" class="dashboard-section hidden">
+      <h2 style="margin: 0 0 16px; font-size: 22px;">Subscriber Dashboard</h2>
+
+      <div id="subscription-status" class="subscription-status">
+        <h3>Checking subscription status...</h3>
+      </div>
+
+      <!-- Subscription Management -->
+      <div id="not-subscribed-section">
+        <h3>Subscribe for $47/month</h3>
+        <p>Your subscription unlocks downloads, auto-updates, and trading capabilities.</p>
+        <button id="btn-subscribe" class="btn-primary btn-subscribe">Subscribe Now</button>
+        <div id="subscribe-error" class="error-message"></div>
+      </div>
+
+      <!-- Download Section (Subscribed) -->
+      <div id="subscribed-section" class="hidden">
+        <h3>Download KnightTrader Coinbase</h3>
+        <p>After downloading, run the installer and enter your claim token on first launch.</p>
+
+        <div style="display:grid; gap:14px; margin: 20px 0;">
+          <button onclick="downloadApp('win')" class="btn-secondary" style="width:100%;padding:14px;font-size:16px;">Download for Windows</button>
+          <button onclick="downloadApp('mac')" class="btn-secondary" style="width:100%;padding:14px;font-size:16px;">Download for Mac (M1/M2)</button>
         </div>
-        <div>
-          <h2 style="margin: 0 0 10px; font-size: 22px;">Strategy improvement</h2>
-          <ul style="color: var(--muted); padding-left: 18px; margin: 0;">
-            <li style="margin-bottom: 10px;">It remembers past trades and context.</li>
-            <li style="margin-bottom: 10px;">You can edit prompts and strategy notes.</li>
-            <li style="margin-bottom: 10px;">It can converge on better behavior after fewer turns.</li>
-            <li style="margin-bottom: 10px;">Skills and lessons are kept locally.</li>
-            <li style="margin-bottom: 10px;">You are effectively training your own assistant.</li>
-          </ul>
+
+        <div id="claim-token-section" class="hidden">
+          <h4>Your Claim Token</h4>
+          <p>Enter this token in the KnightTrader app after installation to auto-configure your credentials.</p>
+          <div id="claim-token-display" class="claim-token-box">
+            <strong>Token:</strong> <span id="claim-token-value"></span>
+          </div>
+          <div class="claim-instructions">
+            <strong>Instructions:</strong>
+            1. Download and install the app
+            2. On first launch, click "Claim Account"
+            3. Enter or paste the token above
+            4. The app will auto-configure with your saved credentials
+          </div>
         </div>
       </div>
-    </section>
 
-    <section>
-      <div class="note">
-        <strong>Important:</strong> KnightTrader Coinbase is a trading assistant, not financial advice. You should review your setup, API permissions, and risk. Start small, verify your Coinbase API permissions, and keep keys restricted.
+      <!-- Credentials Section -->
+      <div id="credentials-section" class="credentials-section hidden">
+        <h3>Manage API Credentials</h3>
+        <div class="cred-group">
+          <label for="coinbase-api-key">Coinbase API Key</label>
+          <input type="text" id="coinbase-api-key" placeholder="organizations/.../apiKeys/..." />
+        </div>
+        <div class="cred-group">
+          <label for="coinbase-secret-key">Coinbase Secret Key</label>
+          <input type="text" id="coinbase-secret-key" placeholder="Base64-encoded private key" />
+        </div>
+        <div class="cred-group">
+          <label for="coinbase-passphrase">Coinbase Passphrase (optional)</label>
+          <input type="text" id="coinbase-passphrase" placeholder="Leave blank if not set" />
+        </div>
+        <button id="btn-save-credentials" class="btn-primary btn-save-creds">Save Credentials</button>
+        <div id="cred-save-status" class="success-message hidden"></div>
       </div>
-    </section>
+    </div>
 
     <section>
-      <h2 style="margin: 0 0 16px; font-size: 22px; text-align: center;">Download</h2>
+      <h2 style="margin: 0 0 16px; font-size: 22px; text-align: center;">Getting Started</h2>
       <div style="display:grid; gap:14px; max-width:760px; margin: 0 auto;">
-        <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/Knightrader.Coinbase.exe" rel="noreferrer">
-          <span>Download for Windows</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-        <a class="cta" href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases/latest/download/KnightTrader.Coinbase-1.0.0-arm64.dmg" rel="noreferrer">
-          <span>Download for Mac</span>
-          <span aria-hidden="true">↓</span>
-        </a>
+        <button onclick="window.location.href='#signup'" class="btn-primary" style="width:100%;padding:14px;font-size:16px;">Create Account & Subscribe</button>
       </div>
       <p class="download-meta" style="text-align: center; margin-top: 14px;">
-        Windows installer • Mac .dmg • If either button breaks, open the <a href="https://github.com/mknight2690-sys/knighttrader-coinbase/releases" rel="noreferrer">release page</a>.
+        Requires $47/month subscription. Cancel anytime.
       </p>
-      <div class="pill-row" style="justify-content: center;">
-        <div class="pill">Local-first</div>
-        <div class="pill">Inspectable</div>
-        <div class="pill">No VPN</div>
-        <div class="pill">Persistent memory</div>
-        <div class="pill">Beginner guided setup</div>
-      </div>
     </section>
 
-    <section>
-      <h2 style="margin: 0 0 16px; font-size: 22px;">Onboard your trading assistant</h2>
-      <div class="grid">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <strong>Download the installer</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Use the button above to download the installer for your platform.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <strong>Install and open the app</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Run the installer, then launch KnightTrader Coinbase.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <strong>Open the How-To tab</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Follow the steps for Hermes setup, API keys, first-time configuration, and keeping your computer awake.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div>
-            <strong>Watch it run</strong>
-            <p style="color: var(--muted); margin: 6px 0 0;">Once configured, the assistant trades on Coinbase every 5 minutes while your computer stays awake and online.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
+    <section id="faq-section">
       <h2 style="margin: 0 0 16px; font-size: 22px;">FAQ</h2>
       <div class="grid">
         <div class="faq-item">
-          <h3>I am new to crypto. Is this for me?</h3>
-          <p>Yes. The app includes a How-To tab that explains each step. You can follow along even if you have not used a trading bot or AI assistant before.</p>
+          <h3>Is this financial advice?</h3>
+          <p>No. KnightTrader is a tool you control. Trade at your own risk after verifying all settings.</p>
         </div>
         <div class="faq-item">
-          <h3>I have used trading bots before. Is this different?</h3>
-          <p>It is local-first and inspectable. You can review logs, prompts, and memory files instead of treating it as an opaque hosted service.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do I need a VPN?</h3>
-          <p>No. KnightTrader Coinbase runs locally and talks to Coinbase directly.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do I have to place trades myself?</h3>
-          <p>No. After setup, the assistant can trade on your behalf. You can inspect logs and the dashboard anytime.</p>
+          <h3>How is my subscription verified?</h3>
+          <p>The app periodically checks your subscription status with our backend using an encrypted token. This happens 24/7 to ensure only subscribers can use the software.</p>
         </div>
         <div class="faq-item">
           <h3>Where do my API keys go?</h3>
-          <p>They stay on your machine. The app stores credentials locally and syncs them into your local Hermes setup.</p>
+          <p>Your Coinbase API keys are stored encrypted on your machine and synced to your local Hermes setup.</p>
         </div>
         <div class="faq-item">
-          <h3>What if I need help?</h3>
-          <p>Open the How-To tab inside the app. It walks through Hermes setup, API keys, first-time configuration, and keeping your computer awake.</p>
+          <h3>Can I use this without a subscription?</h3>
+          <p>No. A valid $47/month subscription is required to download and use KnightTrader Coinbase.</p>
         </div>
         <div class="faq-item">
-          <h3>Is this a subscription or hosted service?</h3>
-          <p>No. It is a local app with one-time setup. There is no ongoing account with us beyond the Coinbase API you control.</p>
-        </div>
-        <div class="faq-item">
-          <h3>What should I do if a download button breaks?</h3>
-          <p>Use the <strong>Open release page</strong> link and grab the installer for your platform manually from the latest release.</p>
+          <h3>What if I cancel my subscription?</h3>
+          <p>If your subscription lapses, you'll lose access to downloads and updates. Your local credentials remain saved.</p>
         </div>
       </div>
     </section>
 
     <footer>
-      Built for Coinbase Advanced Trade users who want a local, inspectable, continuously running trading assistant.
+      <div class="note">
+        <strong>Important:</strong> This is a trading assistant, not financial advice. You should review your setup, API permissions, and risk. Start small, verify your Coinbase API permissions, and keep keys restricted.
+      </div>
     </footer>
   </div>
 
+  <script>
+    // Configuration
+    const BACKEND_URL = 'https://knighttrader-backend.onrender.com'; // Update this URL to match your deployed backend
+    const STRIPE_PUBLISHABLE_KEY = 'pk_live_51P4Xk3L4dQjL1e1b2a3c4d5e6f7g8h9i'; // Update with your Stripe publishable key
+
+    // Auth state
+    let jwtToken = localStorage.getItem('kt_jwt_token');
+
+    // DOM Elements
+    const btnSignIn = document.getElementById('btn-signin');
+    const authModal = document.getElementById('auth-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    const authSubmit = document.getElementById('auth-submit');
+    const switchToSignup = document.getElementById('switch-to-signup');
+    const closeModal = document.getElementById('close-modal');
+    const authError = document.getElementById('auth-error');
+    const authSuccess = document.getElementById('auth-success');
+    const goToDashboard = document.getElementById('go-to-dashboard');
+    const subscriptionStatus = document.getElementById('subscription-status');
+    const notSubscribedSection = document.getElementById('not-subscribed-section');
+    const subscribedSection = document.getElementById('subscribed-section');
+    const btnSubscribe = document.getElementById('btn-subscribe');
+    const subscribeError = document.getElementById('subscribe-error');
+    const claimTokenSection = document.getElementById('claim-token-section');
+    const claimTokenValue = document.getElementById('claim-token-value');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const credentialsSection = document.getElementById('credentials-section');
+    const btnSaveCredentials = document.getElementById('btn-save-credentials');
+    const credSaveStatus = document.getElementById('cred-save-status');
+    const coinbaseApiKey = document.getElementById('coinbase-api-key');
+    const coinbaseSecretKey = document.getElementById('coinbase-secret-key');
+    const coinbasePassphrase = document.getElementById('coinbase-passphrase');
+
+    // Auth flow
+    function showAuthModal(isSignup = false) {
+      authModal.classList.add('active');
+      modalTitle.textContent = isSignup ? 'Sign Up' : 'Sign In';
+      authError.style.display = 'none';
+      authSuccess.style.display = 'none';
+      emailInput.value = '';
+      passwordInput.value = '';
+    }
+
+    function hideAuthModal() {
+      authModal.classList.remove('active');
+    }
+
+    async function handleAuth(isLogin = true) {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!email || !password || password.length < 8) {
+        authError.textContent = 'Valid email and password (min 8 chars) required';
+        authError.style.display = 'block';
+        return;
+      }
+
+      try {
+        const endpoint = isLogin ? '/api/login' : '/api/register';
+        const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          jwtToken = data.token;
+          localStorage.setItem('kt_jwt_token', jwtToken);
+          hideAuthModal();
+          checkSubscription();
+          loadCredentials();
+        } else {
+          authError.textContent = data.error || 'Authentication failed';
+          authError.style.display = 'block';
+        }
+      } catch (err) {
+        authError.textContent = 'Network error - check backend URL';
+        authError.style.display = 'block';
+      }
+    }
+
+    // Subscription check
+    async function checkSubscription() {
+      if (!jwtToken) {
+        dashboardSection.classList.add('hidden');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/verify`, {
+          headers: { 'Authorization': `Bearer ${jwtToken}` }
+        });
+        const data = await response.json();
+
+        if (data.valid && data.authenticated) {
+          dashboardSection.classList.remove('hidden');
+          subscriptionStatus.className = 'subscription-status ' + (data.subscribed ? 'subscribed' : 'not-subscribed');
+
+          if (data.subscribed) {
+            notSubscribedSection.classList.add('hidden');
+            subscribedSection.classList.remove('hidden');
+            credentialsSection.classList.remove('hidden');
+            loadClaimToken();
+          } else {
+            notSubscribedSection.classList.remove('hidden');
+            subscribedSection.classList.add('hidden');
+            credentialsSection.classList.add('hidden');
+            claimTokenSection.classList.add('hidden');
+          }
+        }
+      } catch (err) {
+        dashboardSection.classList.add('hidden');
+      }
+    }
+
+    // Stripe checkout
+    async function handleSubscribe() {
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/create-checkout-session`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwtToken}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          subscribeError.textContent = data.error || 'Failed to create checkout session';
+          subscribeError.style.display = 'block';
+        }
+      } catch (err) {
+        subscribeError.textContent = 'Network error';
+        subscribeError.style.display = 'block';
+      }
+    }
+
+    // Download with claim token
+    let currentClaimToken = null;
+
+    async function loadClaimToken() {
+      claimTokenSection.classList.add('hidden');
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/generate-download-token`, {
+          headers: { 'Authorization': `Bearer ${jwtToken}` }
+        });
+        const data = await response.json();
+
+        if (data.token) {
+          currentClaimToken = data.token;
+          claimTokenValue.textContent = data.token;
+          claimTokenSection.classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error('Failed to generate claim token:', err);
+      }
+    }
+
+    async function downloadApp(os) {
+      if (!currentClaimToken) {
+        await loadClaimToken();
+      }
+
+      const downloadUrl = `${BACKEND_URL}/api/download/${os}?token=${currentClaimToken}`;
+      window.location.href = downloadUrl;
+    }
+
+    // Credentials
+    async function saveCredentials() {
+      const coinbase = {
+        apiKey: coinbaseApiKey.value.trim(),
+        secretKey: coinbaseSecretKey.value.trim(),
+        passphrase: coinbasePassphrase.value.trim()
+      };
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/save-credentials`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwtToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ coinbase, nous: { apiKey: '', model: 'tencent/hy3:free' } })
+        });
+
+        if (response.ok) {
+          credSaveStatus.textContent = '✓ Credentials saved successfully';
+          credSaveStatus.className = 'success-message';
+          credSaveStatus.style.display = 'block';
+        } else {
+          throw new Error('Save failed');
+        }
+      } catch (err) {
+        credSaveStatus.textContent = '✗ Failed to save credentials';
+        credSaveStatus.className = 'error-message';
+        credSaveStatus.style.display = 'block';
+      }
+    }
+
+    async function loadCredentials() {
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/credentials`, {
+          headers: { 'Authorization': `Bearer ${jwtToken}` }
+        });
+        const data = await response.json();
+
+        if (data.coinbase) {
+          coinbaseApiKey.value = data.coinbase.apiKey || '';
+          coinbaseSecretKey.value = data.coinbase.secretKey || '';
+          coinbasePassphrase.value = data.coinbase.passphrase || '';
+        }
+      } catch (err) {
+        console.log('No saved credentials');
+      }
+    }
+
+    // Event listeners
+    btnSignIn?.addEventListener('click', () => showAuthModal(false));
+    closeModal?.addEventListener('click', hideAuthModal);
+    authSubmit?.addEventListener('click', () => handleAuth(true));
+    switchToSignup?.addEventListener('click', () => {
+      authModal.classList.remove('active');
+      showAuthModal(true);
+    });
+    goToDashboard?.addEventListener('click', (e) => {
+      e.preventDefault();
+      hideAuthModal();
+      checkSubscription();
+    });
+    btnSubscribe?.addEventListener('click', handleSubscribe);
+    btnSaveCredentials?.addEventListener('click', saveCredentials);
+
+    // Password enter key
+    passwordInput?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleAuth(true);
+    });
+
+    // Check URL for Stripe session
+    async function handleStripeRedirect() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      if (sessionId) {
+        await checkSubscription();
+      }
+    }
+
+    handleStripeRedirect();
+    checkSubscription();
+  </script>
 </body>
 </html>
