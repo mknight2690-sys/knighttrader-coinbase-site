@@ -493,6 +493,10 @@
     async function checkSubscription() {
       if (!jwtToken) {
         dashboardSection.classList.add('hidden');
+        notSubscribedSection.classList.remove('hidden');
+        subscribedSection.classList.add('hidden');
+        credentialsSection.classList.add('hidden');
+        claimTokenSection.classList.add('hidden');
         return;
       }
 
