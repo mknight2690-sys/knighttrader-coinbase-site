@@ -38,7 +38,7 @@
     btnMacList.forEach((btn) => btn.classList.toggle('hidden', !isMac));
     if (downloadNote) {
       downloadNote.textContent = isMac
-        ? 'Mac: open the .dmg and drag KnightTrader Coinbase into Applications.'
+        ? 'Mac: open the .dmg and drag KnightTrader Propr into Applications.'
         : 'Windows: run the Setup exe. The installer is the whole stack.';
     }
     if (downloadLatest) downloadLatest.textContent = latestTag;

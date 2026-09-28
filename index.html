@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Download KnightTrader Coinbase</title>
-  <meta name="description" content="Download KnightTrader Coinbase. Fifteen minutes or less from install to the auto-trading cron." />
+  <title>Download KnightTrader Propr</title>
+  <meta name="description" content="Download KnightTrader Propr. Fifteen minutes or less from install to the Propr challenge auto-trading cron." />
   <link rel="canonical" href="https://mknight2690-sys.github.io/knighttrader-coinbase-site/" />
   <style>
-    :root { --bg:#070b12; --card:#101826; --text:#e8eef6; --muted:#93a0b3; --blue:#4da3ff; --line:rgba(255,255,255,.08); --good:#7ee3a8; }
+    :root { --bg:#070b12; --card:#101826; --text:#e8eef6; --muted:#93a0b3; --blue:#4da3ff; --propr:#8b5cf6; --line:rgba(255,255,255,.08); --good:#7ee3a8; }
     * { box-sizing:border-box; }
     body { margin:0; font-family:Inter,Segoe UI,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
     a { color:var(--blue); }
     .wrap { max-width:860px; margin:0 auto; padding:28px 20px 72px; }
     .banner { background:rgba(126,227,168,.12); border:1px solid rgba(126,227,168,.4); border-radius:12px; padding:14px 16px; margin-bottom:22px; }
     h1 { font-size:clamp(32px,5vw,52px); letter-spacing:-.04em; line-height:1; margin:8px 0 12px; }
+    h1 span { color:var(--propr); }
     .muted { color:var(--muted); }
     .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; margin-top:18px; }
     .platforms { display:flex; gap:8px; margin-bottom:14px; }
     .platform-btn, .btn { border:0; border-radius:10px; padding:12px 16px; font-weight:750; cursor:pointer; }
     .platform-btn { background:transparent; color:var(--text); border:1px solid var(--line); }
-    .platform-btn.active { border-color:var(--blue); color:var(--blue); }
+    .platform-btn.active { border-color:var(--propr); color:var(--propr); }
     .btn { background:var(--blue); color:#041018; }
     .hidden { display:none; }
     ol { padding-left:18px; }
     .risk { color:var(--muted); font-size:14px; margin-top:22px; }
+    code { font-size:0.92em; }
   </style>
 </head>
 <body>
@@ -31,9 +33,9 @@
     <div id="purchase-success-banner" class="banner" hidden>
       <strong>Payment confirmed.</strong> Download below. The 15-minute clock starts when the installer opens.
     </div>
-    <p class="muted">KnightTrader Coinbase · <span id="download-latest">latest</span></p>
-    <h1>Install it.<br />Two keys.<br />It trades.</h1>
-    <p class="lede">From a blank install to the auto-trading cron is 15 minutes or less. No VPN. The app starts Hermes, the dashboard, the gateway, and the Coinbase cron on its own.</p>
+    <p class="muted">KnightTrader <span style="color:var(--propr)">Propr</span> · <span id="download-latest">latest</span></p>
+    <h1>Install it.<br />Two keys.<br /><span>Challenge trades.</span></h1>
+    <p class="lede">From a blank install to the Propr auto-trading cron is 15 minutes or less. No VPN. The app starts Hermes, the dashboard, the gateway, and the <code>propr-perp-trading</code> cron on its own.</p>
 
     <div class="card">
       <div class="platforms" role="radiogroup" aria-label="Operating system">
@@ -49,13 +51,13 @@
       <strong>The 15 minutes</strong>
       <ol>
         <li>Run the installer.</li>
-        <li>Paste your Coinbase CDP API key and your Nous Portal key. You need a Coinbase account you can already log into.</li>
-        <li>Leave the app open. Hermes installs, the dashboard and gateway connect, and the 5-minute cron is written for you.</li>
+        <li>Paste your Propr <code>pk_live_</code> API key (from <a href="https://app.propr.xyz/settings" target="_blank" rel="noopener">app.propr.xyz/settings</a>) and your Nous or NVIDIA inference key. You need an active Propr challenge account.</li>
+        <li>Leave the app open. Hermes installs, the dashboard and gateway connect, and the 5-minute challenge cron is written for you.</li>
       </ol>
-      <p class="muted">$47/month covers the app, updates, and continued all-in-one access. Nous inference is separate. Free models work. Paid Nous tiers are billed by Nous, not by this subscription.</p>
+      <p class="muted">$47/month covers the app, updates, and continued all-in-one access. Your Propr challenge fee is paid separately at <a href="https://propr.xyz" target="_blank" rel="noopener">propr.xyz</a>. Nous or NVIDIA inference is separate — free models work.</p>
     </div>
 
-    <p class="risk">Coinbase perpetual futures can lose the money in the account. The 15 minutes is setup time, not a result. <a id="back-to-offer" href="https://mknight2690-sys.github.io/knighttrader-coinbase-payment/">Back to the offer</a></p>
+    <p class="risk">Propr challenge accounts have loss limits and can fail. Hyperliquid perpetuals can lose the balance in the account. The 15 minutes is setup time, not a result. <a id="back-to-offer" href="https://mknight2690-sys.github.io/knighttrader-coinbase-payment/">Back to the offer</a></p>
   </div>
   <script src="config.js"></script>
   <script src="main.js"></script>
