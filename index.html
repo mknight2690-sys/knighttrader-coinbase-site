@@ -41,9 +41,11 @@
       <div class="platforms" role="radiogroup" aria-label="Operating system">
         <button class="platform-btn active" data-platform="windows" role="radio" aria-checked="true">Windows</button>
         <button class="platform-btn" data-platform="mac" role="radio" aria-checked="false">Mac</button>
+        <button class="platform-btn" data-platform="linux" role="radio" aria-checked="false">Linux</button>
       </div>
       <button type="button" class="btn btn-download-windows">Download for Windows</button>
       <button type="button" class="btn hidden btn-download-mac">Download for Mac</button>
+      <button type="button" class="btn hidden btn-download-linux">Download for Linux</button>
       <p id="download-note" class="muted">Windows: run the Setup exe. The installer is the whole stack.</p>
     </div>
 
@@ -51,10 +53,10 @@
       <strong>The 15 minutes</strong>
       <ol>
         <li>Run the installer.</li>
-        <li>Paste your Propr <code>pk_live_</code> API key (from <a href="https://app.propr.xyz/settings" target="_blank" rel="noopener">app.propr.xyz/settings</a>) and your Nous or NVIDIA inference key. You need an active Propr challenge account.</li>
+        <li>Paste your Propr <code>pk_live_</code> API key (from <a href="https://app.propr.xyz/settings" target="_blank" rel="noopener">app.propr.xyz/settings</a>) and your Nous Portal inference key. You need an active Propr challenge account.</li>
         <li>Leave the app open. Hermes installs, the dashboard and gateway connect, and the 5-minute challenge cron is written for you.</li>
       </ol>
-      <p class="muted">$47/month covers the app, updates, and continued all-in-one access. Your Propr challenge fee is paid separately at <a href="https://propr.xyz" target="_blank" rel="noopener">propr.xyz</a>. Nous or NVIDIA inference is separate — free models work.</p>
+      <p class="muted">$47/month covers the app, updates, and continued all-in-one access on Windows, Mac, and Linux. Your Propr challenge fee is paid separately at <a href="https://propr.xyz" target="_blank" rel="noopener">propr.xyz</a>. Nous inference is separate — free models work.</p>
     </div>
 
     <p class="risk">Propr challenge accounts have loss limits and can fail. Hyperliquid perpetuals can lose the balance in the account. The 15 minutes is setup time, not a result. <a id="back-to-offer" href="https://mknight2690-sys.github.io/knighttrader-coinbase-payment/">Back to the offer</a></p>

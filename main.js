@@ -5,6 +5,7 @@
   const releaseApiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
   let windowsUrl = `https://github.com/${owner}/${repo}/releases/latest`;
   let macUrl = windowsUrl;
+  let linuxUrl = windowsUrl;
   let latestTag = 'latest';
 
   const params = new URLSearchParams(window.location.search);
@@ -16,6 +17,7 @@
   const platformButtons = document.querySelectorAll('.platform-btn');
   const btnWindowsList = document.querySelectorAll('.btn-download-windows');
   const btnMacList = document.querySelectorAll('.btn-download-mac');
+  const btnLinuxList = document.querySelectorAll('.btn-download-linux');
   const downloadNote = document.getElementById('download-note');
   const downloadLatest = document.getElementById('download-latest');
 
@@ -29,26 +31,40 @@
   }
 
   function selectPlatform(key) {
-    const isMac = key === 'mac';
     platformButtons.forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.platform === key);
       btn.setAttribute('aria-checked', btn.dataset.platform === key ? 'true' : 'false');
     });
-    btnWindowsList.forEach((btn) => btn.classList.toggle('hidden', isMac));
-    btnMacList.forEach((btn) => btn.classList.toggle('hidden', !isMac));
+    btnWindowsList.forEach((btn) => btn.classList.toggle('hidden', key !== 'windows'));
+    btnMacList.forEach((btn) => btn.classList.toggle('hidden', key !== 'mac'));
+    btnLinuxList.forEach((btn) => btn.classList.toggle('hidden', key !== 'linux'));
     if (downloadNote) {
-      downloadNote.textContent = isMac
-        ? 'Mac: open the .dmg and drag KnightTrader Propr into Applications.'
-        : 'Windows: run the Setup exe. The installer is the whole stack.';
+      if (key === 'mac') {
+        downloadNote.textContent = 'Mac: open the .dmg and drag KnightTrader Propr into Applications.';
+      } else if (key === 'linux') {
+        downloadNote.textContent = 'Linux: download the AppImage, chmod +x, then run it. No root install required.';
+      } else {
+        downloadNote.textContent = 'Windows: run the Setup exe. The installer is the whole stack.';
+      }
     }
     if (downloadLatest) downloadLatest.textContent = latestTag;
   }
 
   btnWindowsList.forEach((btn) => { btn.onclick = () => triggerDownload(windowsUrl); });
   btnMacList.forEach((btn) => { btn.onclick = () => triggerDownload(macUrl); });
+  btnLinuxList.forEach((btn) => { btn.onclick = () => triggerDownload(linuxUrl); });
   platformButtons.forEach((btn) => {
     btn.addEventListener('click', () => selectPlatform(btn.dataset.platform));
   });
+
+  function detectPlatform() {
+    const ua = navigator.userAgent || '';
+    const platform = navigator.platform || '';
+    if (/Win/i.test(platform) || /Windows/i.test(ua)) return 'windows';
+    if (/Mac/i.test(platform) || /Macintosh/i.test(ua)) return 'mac';
+    if (/Linux/i.test(platform) || /Linux/i.test(ua)) return 'linux';
+    return 'windows';
+  }
 
   async function updateDownloadLinks() {
     try {
@@ -59,10 +75,12 @@
       latestTag = release.tag_name || latestTag;
       const winAsset = assets.find((a) => a.name.includes('Setup') && a.name.endsWith('.exe'));
       const macAsset = assets.find((a) => a.name.endsWith('.dmg') && !a.name.includes('blockmap'));
+      const linuxAsset = assets.find((a) => a.name.endsWith('.AppImage') && !a.name.includes('blockmap'));
       if (winAsset?.browser_download_url) windowsUrl = winAsset.browser_download_url;
       if (macAsset?.browser_download_url) macUrl = macAsset.browser_download_url;
+      if (linuxAsset?.browser_download_url) linuxUrl = linuxAsset.browser_download_url;
     } catch (_) {}
-    selectPlatform('windows');
+    selectPlatform(detectPlatform());
   }
 
   updateDownloadLinks();
