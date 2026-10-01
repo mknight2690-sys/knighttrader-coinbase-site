@@ -45,8 +45,13 @@
       </div>
       <button type="button" class="btn btn-download-windows">Download for Windows</button>
       <button type="button" class="btn hidden btn-download-mac">Download for Mac</button>
-      <button type="button" class="btn hidden btn-download-linux">Download for Linux</button>
+      <button type="button" class="btn hidden btn-download-linux">Download AppImage for Linux</button>
       <p id="download-note" class="muted">Windows: run the Setup exe. The installer is the whole stack.</p>
+      <p id="linux-alt-links" class="muted hidden" style="margin-top:10px">
+        No FUSE? Download <a href="#" data-linux-helper>run-knighttrader-propr.sh</a> or the
+        <a href="#" data-linux-tar>tar.gz build</a>, then run
+        <code>./knighttrader-propr --headless --paper-only --task "Reply with exactly: PONG"</code>
+      </p>
     </div>
 
     <div class="card">
