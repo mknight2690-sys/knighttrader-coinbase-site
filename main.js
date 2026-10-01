@@ -97,7 +97,7 @@
       const macAsset = assets.find((a) => a.name.endsWith('.dmg') && !a.name.includes('blockmap'));
       const linuxAsset = assets.find((a) => a.name.endsWith('.AppImage') && !a.name.includes('blockmap'));
       const tarAsset = assets.find((a) => a.name.endsWith('.tar.gz') && /linux|x64|x86_64/i.test(a.name));
-      const helperAsset = assets.find((a) => a.name === 'run-knighttrader-propr.sh');
+      const helperAsset = assets.find((a) => a.name === 'run-knighttrader-propr.sh' || a.name === 'run-linux.sh');
       if (winAsset?.browser_download_url) windowsUrl = winAsset.browser_download_url;
       if (macAsset?.browser_download_url) macUrl = macAsset.browser_download_url;
       if (linuxAsset?.browser_download_url) linuxUrl = linuxAsset.browser_download_url;
